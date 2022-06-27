@@ -1,28 +1,43 @@
 import { Request, Response, NextFunction } from 'express'
 
-import Movie from '../models/Movie'
-import MovieService from '../services/movie'
+import Time from '../models/TimeSheet'
+import TimeService from '../services/TimeSheet'
 import { BadRequestError } from '../helpers/apiError'
 
-// POST /movies
-export const createMovie = async (
+// POST /times
+export const createTimeSheet = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const { name, publishedYear, genres, duration, characters } = req.body
+    const { Date, From, To, Duration, Rate, Internal_rate, User, Customer, Project, Activity, Exported, Billable, Tags, Hourly_rate, Fixed_rate, label_category, Account, VAT_ID, Type, Order_number, } = req.body
 
-    const movie = new Movie({
-      name,
-      publishedYear,
-      genres,
-      duration,
-      characters,
+    const time = new Time({
+      Date,
+      From,
+      To,
+      Duration,
+      Rate,
+      Internal_rate,
+      User,
+      Customer,
+      Project,
+      Activity,
+      Exported,
+      Billable,
+      Tags,
+      Hourly_rate,
+      Fixed_rate,
+      label_category,
+      Account,
+      VAT_ID,
+      Type,
+      Order_number,
     })
 
-    await MovieService.create(movie)
-    res.json(movie)
+    await TimeService.createm(time)
+    res.json(time)
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
@@ -32,17 +47,17 @@ export const createMovie = async (
   }
 }
 
-// PUT /movies/:movieId
-export const updateMovie = async (
+// PUT /times/:timeId
+export const updateTimeSheet = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
     const update = req.body
-    const movieId = req.params.movieId
-    const updatedMovie = await MovieService.update(movieId, update)
-    res.json(updatedMovie)
+    const timeId = req.params.timeId
+    const updatedTime = await TimeService.update(timeId, update)
+    res.json(updatedTime)
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
@@ -52,14 +67,14 @@ export const updateMovie = async (
   }
 }
 
-// DELETE /movies/:movieId
-export const deleteMovie = async (
+// DELETE /times/:timeId
+export const deleteTimeSheet = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    await MovieService.deleteMovie(req.params.movieId)
+    await TimeService.deleteTimeSheet(req.params.timeId)
     res.status(204).end()
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
@@ -70,14 +85,14 @@ export const deleteMovie = async (
   }
 }
 
-// GET /movies/:movieId
+// GET /times/:timeId
 export const findById = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    res.json(await MovieService.findById(req.params.movieId))
+    res.json(await TimeService.findById(req.params.timeId))
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
@@ -87,14 +102,14 @@ export const findById = async (
   }
 }
 
-// GET /movies
+// GET /times
 export const findAll = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    res.json(await MovieService.findAll())
+    res.json(await TimeService.findAll())
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
