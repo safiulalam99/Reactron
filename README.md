@@ -2,7 +2,7 @@
 
 First choose the project topic. The topics and assignment can be found in Fullstack assignment presentation on the shared drive.
 
-## Prerequisites
+## Prerequisite
 
 1. Install mongodb or use MongoDB Atlas (cloud version)
 2. Install nodejs (if you don't have it already)
