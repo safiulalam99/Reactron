@@ -6,7 +6,7 @@ import TimeService from '../services/TimeSheet'
 import { BadRequestError } from '../helpers/apiError'
 
 // POST /times
-export const createTimeSheet = async (
+export const createExternal = async (
   req: Request,
   res: Response,
   next: NextFunction
