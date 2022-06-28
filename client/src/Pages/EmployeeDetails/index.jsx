@@ -16,7 +16,7 @@ const EmployeeDetail = () => {
     const location = useLocation();
     let path = location.pathname
    let splits = path.split('%')[0].split('/')[2]
-    console.log(splits)  
+    // console.log(splits)  
  
     const [data, setData] = useState([]);
     const [error, setError] = useState("");
@@ -36,44 +36,7 @@ const EmployeeDetail = () => {
 
     
   return (
-<TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell align="right">Date</TableCell>
-            <TableCell align="right">Duration</TableCell>
-            <TableCell align="right">Internal rate</TableCell>
-            <TableCell align="right">Customer</TableCell>
-            <TableCell align="right">Project</TableCell>
-            <TableCell align="right">Billable</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {filters.map((row) => (
-           
-              <TableRow
-                key={row.User}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                 <Link
-              to={`/employee/${row.User}`}
-            >
-                <TableCell component="th" scope="row">
-                  {row.User}
-                </TableCell>
-                </Link>
-                <TableCell align="right">{row.Duration}</TableCell>
-                <TableCell align="right">{row.Date}</TableCell>
-                <TableCell align="right">{row.Internal_rate}</TableCell>
-                <TableCell align="right">{row.Customer}</TableCell>
-                <TableCell align="right">{row.Project}</TableCell>
-                <TableCell align="right">{row.Billable}</TableCell>
-              </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    filters.map((row) => row.User)
   )
 }
 
