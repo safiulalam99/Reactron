@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import Grids from "../../Component/Grids";
 
 const EmployeeDetail = () => {
   const location = useLocation();
@@ -29,7 +30,7 @@ const EmployeeDetail = () => {
   };
   const fetchInternal = async () => {
     const data1 = await axios.get(
-      "https://run.mocky.io/v3/7c84ba10-822f-4b30-9b0d-156a8c7dad33"
+      "https://run.mocky.io/v3/77d33342-bb12-4e57-a881-d98871b959d2"
     );
     setInternal(data1.data);
   };
@@ -47,6 +48,28 @@ const EmployeeDetail = () => {
   }, []);
   let filters = TimeData.filter((d) => d.User.split(" ")[0] === splits);
   // console.log(filters);
+  //   const unique = (value, index, self) => {
+  //     return self.indexOf(value) === index;
+  //   };
+
+  //   const lipa = filters.map((d) => d.Project);
+  //   const uniqueAges = lipa.filter(unique);
+
+  //   for (let i = 0; i < uniqueAges.length; i++) {
+  //     let sortedProject = filters.filter((row) => row.Project === uniqueAges[i]);
+  //     // console.log(sortedProject);
+  //   }
+
+  // let filteredExternal = external.map((d)=>(JSON.stringify(d.Project, d.Hourly_rate)))
+  let obj = {};
+  let revenue = 0;
+  let filteredExternal = external.map((d) => (obj[d.Project] = d.Hourly_rate));
+  let tempFilter = filters.map((row) =>
+    obj[row.Project]
+      ? (revenue += (row.Duration / 3600) * obj[row.Project])
+      : (revenue += 0)
+  );
+
   const unique = (value, index, self) => {
     return self.indexOf(value) === index;
   };
@@ -54,21 +77,33 @@ const EmployeeDetail = () => {
   const lipa = filters.map((d) => d.Project);
   const uniqueAges = lipa.filter(unique);
 
-  for (let i = 0; i < uniqueAges.length; i++) {
-    let sortedProject = filters.filter((row) => row.Project === uniqueAges[i]);
-    console.log(sortedProject);
-  }
-
-  console.log(uniqueAges);
-
   let hours = 0;
-  const option = "FeetB";
-  {
-    option
-      ? filters.map((row) => (hours += row.Duration / 3600))
-      : console.log("hours");
-  }
-  return hours;
+  filters.map((row) => (hours += row.Duration / 3600));
+  let variable = internal.filter((d) => d.User.split(" ")[0] === splits);
+  let internalSalary = variable.map((d) => d.internal_rate).toString() * hours;
+
+  let sickDay = 0;
+  filters.map((row) =>
+    row.Project == "Sick Leave" ? (sickDay += 1) : console.log("work")
+  );
+  console.log(sickDay);
+
+  let holiday = 0;
+  filters.map((row) =>
+    row.Project == "Holiday" ? (sickDay += 1) : console.log("work")
+  );
+  console.log(holiday);
+
+  return (
+    <Grids
+      revenue={revenue}
+      hours={hours}
+      projects={uniqueAges}
+      salary={internalSalary}
+      sickDay={sickDay}
+      holiday={holiday}
+    />
+  );
 };
 
 export default EmployeeDetail;
