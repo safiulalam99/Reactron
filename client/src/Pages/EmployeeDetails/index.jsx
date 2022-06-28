@@ -22,7 +22,7 @@ const EmployeeDetail = () => {
     const [error, setError] = useState("");
     const fetchData = async () => {
       const data1 = await axios.get(
-        "http://localhost:5000/api/v1/timeSheet "
+        "https://run.mocky.io/v3/a3f3a8dd-678f-4941-91b2-28923b305d4b"
       );
       setData(data1.data);
     };
@@ -33,10 +33,11 @@ const EmployeeDetail = () => {
   let filters= data.filter(d=>d.User.split(' ')[0] === splits);
   console.log('object ', filters);
 
-
+  let hours = 0;
+  filters.map((row) => hours += row.Duration)
     
   return (
-    filters.map((row) => row.User)
+    hours/3600
   )
 }
 
