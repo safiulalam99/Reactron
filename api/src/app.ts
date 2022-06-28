@@ -1,6 +1,7 @@
 import express from 'express'
 // import lusca from 'lusca' will be used later
 import dotenv from 'dotenv'
+var cors = require('cors')
 
 import timeSheetRouter from './routers/timeSheet'
 import apiErrorHandler from './middlewares/apiErrorHandler'
@@ -11,12 +12,12 @@ const app = express()
 
 // Express configuration
 app.set('port', process.env.PORT || 3000)
+app.use(cors()) 
 
 // Global middleware
 app.use(apiContentType)
 app.use(express.json({limit: '50mb'}))
 app.use(express.urlencoded({limit: '50mb'}));
-
 // Set up routers
 app.use('/api/v1/timeSheet', timeSheetRouter)
 
