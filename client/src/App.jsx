@@ -1,5 +1,3 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import NavBar from './Component/Nav'
 import Revenue from './Pages/Revenue'
