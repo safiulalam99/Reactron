@@ -1,7 +1,6 @@
 import errorHandler from 'errorhandler'
 import mongoose from 'mongoose'
-var cors = require('cors')
-
+import cors from 'cors'
 
 import app from './app'
 import { MONGODB_URI } from './util/secrets'
@@ -25,7 +24,7 @@ mongoose
     )
     process.exit(1)
   })
-app.use(cors()) 
+app.use(cors())
 /**
  * Error Handler. Provides error handing middleware
    only use in development
