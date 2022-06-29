@@ -16,6 +16,7 @@ const Project = () => {
   }, []);
 
   return <div>
+    <h1>Projects</h1>
       <ProjectTable data={external}/>
   </div>;
 };

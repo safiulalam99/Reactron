@@ -18,6 +18,7 @@ const Employee = () => {
    console.log(data.data);
   return (
     <>
+    <h1>Time Sheet</h1>
       <EmployeeTable data={data} />
     </>
   );

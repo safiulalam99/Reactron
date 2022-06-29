@@ -2,7 +2,33 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import Grids from "../../Component/Grids";
+import Grids from "../../Component/EmployeeGrids";
+// import {options,graphData} from "../../Component/Chart";
+import { Line } from 'react-chartjs-2';
+import React from 'react';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import faker from 'faker';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+
 
 const EmployeeDetail = () => {
   const location = useLocation();
@@ -84,17 +110,62 @@ const EmployeeDetail = () => {
   filters.map((row) =>
     row.Project === "Holiday" ? (sickDay += 1) : console.log("work")
   );
+  const duration = filters.map((row) => Math.round(row.Duration / 3600));
+  const date = filters.map((row) => row.Date);
+
+  console.log(internalSalary);
+
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      subtitle: {
+        display: true,
+        text: 'Chart Subtitle',
+      },
+        
+      title: {
+        display: true,
+        text: 'Work history',
+      },
+    },
+  };
+  
+  const labels = date
+  console.log(duration.map((d) => d));
+   const graphData = {
+    labels,
+      subtitle: {
+        display: true,
+        text: 'Chart Subtitle',
+      },
+    datasets: [
+      {
+        label: 'Hours',
+        data: duration.map((d) => d),
+        borderColor: 'rgb(53, 162, 235)',
+        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      },
+    ],
+  };
+
 
   return (
-    <Grids
-      revenue={revenue}
-      hours={hours}
-      projects={uniqueAges}
-      salary={internalSalary}
-      sickDay={sickDay}
-      holiday={holiday}
-      user={user[0]}
-    />
+    <>
+      <Line options={options} data={graphData} />
+      <Grids
+        revenue={revenue}
+        hours={hours}
+        projects={uniqueAges}
+        salary={internalSalary}
+        sickDay={sickDay}
+        holiday={holiday}
+        user={user[0]}
+      />
+    </>
   );
 };
 
