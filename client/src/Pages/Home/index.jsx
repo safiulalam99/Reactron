@@ -98,6 +98,8 @@ function Album(props) {
     fetchInternal();
     fetchExternal();
   }, []);
+
+  //estimated revenue
   let project = external.map((d) => d.Project);
   let hourly_rate = external.map((d) => d.Hourly_rate);
   let duration = 0;
@@ -105,14 +107,22 @@ function Album(props) {
 let TEST_avg_hourly_rev=0
 let TEST_avg_monthly_rev=0
 const hourly_revenue = hourly_rate.map((d)=>TEST_avg_hourly_rev+=d )
-// const monthly_revenue = hourly_rate.map((d)=>TEST_avg_monthly_rev+=d )
 const monthly_revenue = (18750 *12/37)/52
-// console.log(monthly_revenue);
-
 const avg_hourly_external_rate = TEST_avg_hourly_rev/(hourly_rate.length-1)
 const estimated_rev = ((avg_hourly_external_rate+monthly_revenue)/2) * duration
 
-  console.log(estimated_rev);
+
+//estimated profit
+
+let internal_avg_rate =0 
+let internal_rev = internal.map((d)=>internal_avg_rate+=d.internal_rate)
+const salary_avg = internal_rev.length
+const employee_salary = (internal_avg_rate/salary_avg)*duration
+const profit = estimated_rev - employee_salary ;
+console.log(employee_salary);
+
+
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -146,7 +156,14 @@ const estimated_rev = ((avg_hourly_external_rate+monthly_revenue)/2) * duration
                 <Grid item xs={2} sm={4} md={4}>
                   <Item>
                     <h3> Estimated revenue </h3>
-                    <h1>{'€'+estimated_rev.toFixed(2)}</h1>
+                    <h1>{'€ '+estimated_rev.toFixed(2)}</h1>
+                  </Item>
+                </Grid>
+
+                <Grid item xs={2} sm={4} md={4}>
+                  <Item>
+                    <h3>Profit</h3>
+                    <h1>{'€ '+profit.toFixed(2)}</h1>
                   </Item>
                 </Grid>
 
@@ -154,6 +171,12 @@ const estimated_rev = ((avg_hourly_external_rate+monthly_revenue)/2) * duration
                   <Item>
                     <h3>Total employees work hour count</h3>
                     <h1>{duration.toFixed(0)} hours</h1>
+                  </Item>
+                </Grid>
+                <Grid item xs={2} sm={4} md={4}>
+                  <Item>
+                    <h3>Employee Salaries</h3>
+                    <h1>{'€ '+employee_salary.toFixed(2)}</h1>
                   </Item>
                 </Grid>
               </Grid>
