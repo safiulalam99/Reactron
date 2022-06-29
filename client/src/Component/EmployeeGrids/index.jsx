@@ -21,6 +21,7 @@ export default function EmployeeGrids({
   user,
   billable,
   totalIndex,
+  rate
 }) {
   return (
     <>
@@ -30,7 +31,7 @@ export default function EmployeeGrids({
           <Grid item xs={2} sm={4} md={4}>
             <Item>
               <h3> Total revenue brought in by employee </h3>
-              <h1>{revenue.toFixed(2)}</h1>
+              <h1>{'€'+revenue.toFixed(2)}</h1>
             </Item>
             </Grid>
 
@@ -43,6 +44,13 @@ export default function EmployeeGrids({
 
             <Grid item xs={2} sm={4} md={4}>
             <Item>
+              <h3>Internal rate per hour</h3>
+              <h1>{'€'+rate }</h1>
+            </Item>
+          </Grid>
+
+            <Grid item xs={2} sm={4} md={4}>
+            <Item>
               <h3>Projects worked on </h3>
               <h1>{"  " + projects + " "}</h1>
             </Item>
@@ -51,13 +59,13 @@ export default function EmployeeGrids({
             <Grid item xs={2} sm={4} md={4}>
             <Item>
               <h3>Employee salary</h3>
-              <h1>{"  " + salary.toFixed(2) + " "}</h1>
+              <h1>{'€'+salary.toFixed(2) + " "}</h1>
             </Item>
             </Grid>
 
             <Grid item xs={2} sm={4} md={4}>
             <Item>
-              <h3>Holiday</h3>
+              <h3>Holidays</h3>
               <h1>{"  " + holiday + " "}</h1>
             </Item>
             </Grid>
@@ -74,6 +82,7 @@ export default function EmployeeGrids({
               <h1>{"  " + billable + "/" + totalIndex}</h1>
             </Item>
           </Grid>
+
         </Grid>
       </Box>
     </>

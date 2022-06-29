@@ -17,7 +17,7 @@ import { experimentalStyled as styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 
-import Charts from '../../Component/BarChart'
+import Charts from "../../Component/BarChart";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -88,7 +88,7 @@ function Album(props) {
   };
   const fetchExternal = async () => {
     const data1 = await axios.get(
-      "https://run.mocky.io/v3/4fc47154-feef-401d-80d8-6e3978a5bb7d"
+      "https://run.mocky.io/v3/9618fa8f-fc1f-4429-bb1a-6c752af43975"
     );
     setExternal(data1.data);
   };
@@ -100,9 +100,19 @@ function Album(props) {
   }, []);
   let project = external.map((d) => d.Project);
   let hourly_rate = external.map((d) => d.Hourly_rate);
-let duration =0
-TimeData.map((d)=>duration+=d.Duration/3600);
-console.log(duration);
+  let duration = 0;
+  TimeData.map((d) => (duration += d.Duration / 3600));
+let TEST_avg_hourly_rev=0
+let TEST_avg_monthly_rev=0
+const hourly_revenue = hourly_rate.map((d)=>TEST_avg_hourly_rev+=d )
+// const monthly_revenue = hourly_rate.map((d)=>TEST_avg_monthly_rev+=d )
+const monthly_revenue = (18750 *12/37)/52
+// console.log(monthly_revenue);
+
+const avg_hourly_external_rate = TEST_avg_hourly_rev/(hourly_rate.length-1)
+const estimated_rev = ((avg_hourly_external_rate+monthly_revenue)/2) * duration
+
+  console.log(estimated_rev);
   return (
     <React.Fragment>
       <CssBaseline />
@@ -112,7 +122,7 @@ console.log(duration);
 
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
-          <Grid container spacing={40}>
+          <Grid container justify="center" spacing={40}>
             <Box sx={{ width: "100%" }}>
               <Grid
                 on
@@ -133,6 +143,12 @@ console.log(duration);
                     <h1>{external.length}</h1>
                   </Item>
                 </Grid>
+                <Grid item xs={2} sm={4} md={4}>
+                  <Item>
+                    <h3> Estimated revenue </h3>
+                    <h1>{'€'+estimated_rev.toFixed(2)}</h1>
+                  </Item>
+                </Grid>
 
                 <Grid item xs={2} sm={4} md={4}>
                   <Item>
@@ -145,23 +161,19 @@ console.log(duration);
           </Grid>
         </div>
         <div className={classes.heroUnit}>
-      <Charts date={project} duration={hourly_rate}/>
-            
-
+          <Charts date={project} duration={hourly_rate} />
         </div>
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
+        <Typography variant="h6" align="center" gutterBottom></Typography>
         <Typography
           variant="subtitle1"
           align="center"
           color="textSecondary"
           component="p"
         >
-          Something here to give the footer a purpose!
+          All rights reserved
         </Typography>
       </footer>
       {/* End footer */}

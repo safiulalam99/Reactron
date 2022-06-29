@@ -29,7 +29,7 @@ const EmployeeDetail = () => {
   };
   const fetchExternal = async () => {
     const data1 = await axios.get(
-      "https://run.mocky.io/v3/4fc47154-feef-401d-80d8-6e3978a5bb7d"
+      "https://run.mocky.io/v3/9618fa8f-fc1f-4429-bb1a-6c752af43975"
     );
     setExternal(data1.data);
   };
@@ -97,8 +97,9 @@ const EmployeeDetail = () => {
 
   const bill = filters.filter((d) => d.Billable ==='No');
   const billable= bill.map((d)=>totalNonBillableHours+=d.Duration/3600)
+  let rate = variable.map((d) => d.internal_rate).toString() ;
   
-  console.log(totalBillableHours);
+  // console.log(rate);
   // console.log('bill',bill);
 
 
@@ -117,6 +118,7 @@ const EmployeeDetail = () => {
         user={user[0]}
         billable={totalNonBillableHours.toFixed(1)}
         totalIndex={totalBillableHours.toFixed(1)}
+        rate ={rate}
       />
     </>
   );

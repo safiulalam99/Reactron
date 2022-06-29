@@ -27,7 +27,7 @@ export default function ProjectGrid({ name, hours,projectRevenue,employees }) {
           <Grid item xs={6}>
             <Item>
               <h3>Project revenue</h3>
-              <h1>{projectRevenue}</h1>
+              <h1>{'€'+projectRevenue}</h1>
             </Item>
           </Grid>
           <Grid item xs={6}>

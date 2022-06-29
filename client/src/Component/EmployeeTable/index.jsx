@@ -22,8 +22,8 @@ export default function EmployeeTable({ data }) {
           <TableHead>
             <TableRow>
               <StyledTableCell>Name</StyledTableCell>
+              <StyledTableCell align="right">Duration (hrs)</StyledTableCell>
               <StyledTableCell align="right">Date</StyledTableCell>
-              <StyledTableCell align="right">Duration</StyledTableCell>
               <StyledTableCell align="right">Internal rate</StyledTableCell>
               <StyledTableCell align="right">Customer</StyledTableCell>
               <StyledTableCell align="right">Project</StyledTableCell>
@@ -41,7 +41,7 @@ export default function EmployeeTable({ data }) {
                       {row.User}
                     </StyledTableCell>
                   </Link>
-                  <StyledTableCell align="right">{row.Duration}</StyledTableCell>
+                  <StyledTableCell align="right">{(row.Duration/3600).toFixed(1)}</StyledTableCell>
                   <StyledTableCell align="right">{row.Date}</StyledTableCell>
                   <StyledTableCell align="right">{row.Internal_rate}</StyledTableCell>
                   <StyledTableCell align="right">{row.Customer}</StyledTableCell>

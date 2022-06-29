@@ -42,6 +42,13 @@ export default function DrawerAppBar(props: Props) {
       <List>
 
 
+        <Link to={`/`} style={{ textDecoration: "none" }}>
+          <ListItem key={"home"} disablePadding>
+            <ListItemButton sx={{ textAlign: "center" }}>
+              <ListItemText primary={"home"} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
         <Link to={`/employee`} style={{ textDecoration: "none" }}>
           <ListItem key={"employee"} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
@@ -86,6 +93,11 @@ export default function DrawerAppBar(props: Props) {
           </Typography>
           <Box sx={{ display: { xs: "n  one", sm: "block" } }}>
 
+            <Link to={`/`} style={{ textDecoration: "none" }}>
+              <Button key={"home"} sx={{ color: "#fff" }}>
+                home
+              </Button>
+            </Link>
             <Link to={`/project`} style={{ textDecoration: "none" }}>
               <Button key={"project"} sx={{ color: "#fff" }}>
                 Project

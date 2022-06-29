@@ -6,7 +6,7 @@ const Project = () => {
   const [external, setExternal] = useState([]);
   const fetchExternal = async () => {
     const data1 = await axios.get(
-      "https://run.mocky.io/v3/4e64f315-adb4-49df-a439-61a14da36084"
+      "https://run.mocky.io/v3/9618fa8f-fc1f-4429-bb1a-6c752af43975"
     );
     setExternal(data1.data);
   };

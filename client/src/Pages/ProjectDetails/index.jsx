@@ -30,7 +30,7 @@ const ProfitDetails = () => {
   };
   const fetchExternal = async () => {
     const data1 = await axios.get(
-      "https://run.mocky.io/v3/4fc47154-feef-401d-80d8-6e3978a5bb7d"
+      "https://run.mocky.io/v3/9618fa8f-fc1f-4429-bb1a-6c752af43975"
     );
     setExternal(data1.data);
   };
