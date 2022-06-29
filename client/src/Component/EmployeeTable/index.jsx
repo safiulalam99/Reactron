@@ -10,22 +10,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export default function EmployeeTable() {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState("");
-  const fetchData = async () => {
-    const data1 = await axios.get(
-      "https://run.mocky.io/v3/a3f3a8dd-678f-4941-91b2-28923b305d4b"
-    );
-    setData(data1.data);
-  };
+export default function EmployeeTable({data}) {
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-let filters= data.filter(d=>d.User.split(' ')[0] === 'Anders');
-console.log('object ', filters);
-// console.log('fetched data', data[0].User.split(' ')[0])
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">

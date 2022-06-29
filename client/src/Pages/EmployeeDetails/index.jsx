@@ -1,11 +1,3 @@
-import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -21,7 +13,6 @@ const EmployeeDetail = () => {
   const [TimeData, setTimeData] = useState([]);
   const [internal, setInternal] = useState([]);
   const [external, setExternal] = useState([]);
-  const [error, setError] = useState("");
   const fetchData = async () => {
     const data1 = await axios.get(
       "https://run.mocky.io/v3/a3f3a8dd-678f-4941-91b2-28923b305d4b"
@@ -47,6 +38,7 @@ const EmployeeDetail = () => {
     fetchExternal();
   }, []);
   let filters = TimeData.filter((d) => d.User.split(" ")[0] === splits);
+  // const user= TimeData.filter((d) => d.User);
   // console.log(filters);
   //   const unique = (value, index, self) => {
   //     return self.indexOf(value) === index;
@@ -75,6 +67,7 @@ const EmployeeDetail = () => {
   };
 
   const lipa = filters.map((d) => d.Project);
+  const user = filters.map((d) => d.User);
   const uniqueAges = lipa.filter(unique);
 
   let hours = 0;
@@ -84,15 +77,13 @@ const EmployeeDetail = () => {
 
   let sickDay = 0;
   filters.map((row) =>
-    row.Project == "Sick Leave" ? (sickDay += 1) : console.log("work")
+    row.Project === "Sick Leave" ? (sickDay += 1) : console.log("work")
   );
-  console.log(sickDay);
 
   let holiday = 0;
   filters.map((row) =>
-    row.Project == "Holiday" ? (sickDay += 1) : console.log("work")
+    row.Project === "Holiday" ? (sickDay += 1) : console.log("work")
   );
-  console.log(holiday);
 
   return (
     <Grids
@@ -102,6 +93,7 @@ const EmployeeDetail = () => {
       salary={internalSalary}
       sickDay={sickDay}
       holiday={holiday}
+      user={user[0]}
     />
   );
 };

@@ -12,9 +12,10 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function ResponsiveGrid({revenue, hours,projects,salary,holiday,sickDay}) {
+export default function ResponsiveGrid({revenue, hours,projects,salary,holiday,sickDay,user}) {
   return (
     <Box sx={{ flexGrow: 1 }}>
+       <h2>{user}</h2>
       <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
      
           <Grid item xs={2} sm={4} md={4} >
