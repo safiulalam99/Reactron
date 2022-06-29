@@ -13,6 +13,7 @@ const ProfitDetails = () => {
   const [TimeData, setTimeData] = useState([]);
   const [internal, setInternal] = useState([]);
   const [external, setExternal] = useState([]);
+
   const unique = (value, index, self) => {
     return self.indexOf(value) === index;
   };
@@ -40,6 +41,7 @@ const ProfitDetails = () => {
     fetchInternal();
     fetchExternal();
   }, []);
+
   let filters = TimeData.filter((d) => d.Project.split(" ")[0] === splits);
   let hours = 0;
   const duration = filters.map((d) => (hours += d.Duration / 3600));
@@ -57,11 +59,25 @@ const ProfitDetails = () => {
   let variable = internal.filter((d) => d.User);
   let internalSalary = variable.map((d) => d.internal_rate).toString() * hours;
 
+  let obj = {};
+  let wages = 0;
+  let profit = 0;
+  let filteredInternal = internal.map((d) => (obj[d.User] = d.internal_rate));
+  let tempFilter = filters.map((row) =>
+    obj[row.User]
+      ? (wages += (row.Duration / 3600) * obj[row.User])
+      : (wages += 0)
+  );
+  console.log(wages);
+
+  profit = projectRevenue - Math.round(wages)
+  console.log(profit)
 
   // employees working on project
   const user = filters.map((d) => d.User);
   const uniqueEmployees = user.filter(unique).toString();
   console.log(uniqueEmployees);
+
   return (
     <div>
       <ProjectGrid
@@ -69,6 +85,7 @@ const ProfitDetails = () => {
         hours={Math.round(hours)}
         projectRevenue={projectRevenue}
         employees={uniqueEmployees}
+        profit={profit}
       />
     </div>
   );

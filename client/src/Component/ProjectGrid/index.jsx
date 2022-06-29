@@ -12,7 +12,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function ProjectGrid({ name, hours,projectRevenue,employees }) {
+export default function ProjectGrid({ name, hours,projectRevenue,employees, profit }) {
   return (
     <>
       <h1>{name}</h1>
@@ -38,8 +38,8 @@ export default function ProjectGrid({ name, hours,projectRevenue,employees }) {
           </Grid>
           <Grid item xs={6}>
             <Item>
-              <h3>Hours Worked</h3>
-              <h1>{hours}</h1>
+              <h3>Profit</h3>
+              <h1>{'€'+profit}</h1>
             </Item>
           </Grid>
         </Grid>
