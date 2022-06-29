@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Grids from "../../Component/EmployeeGrids";
-import Charts from "../../Component/LineChart";
+import Charts from "../../Component/Chart";
 import Grid from '@mui/material/Grid';
 
 const EmployeeDetail = () => {
