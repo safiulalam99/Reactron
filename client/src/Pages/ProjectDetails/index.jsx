@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import ProfitGrid from "../../Component/ProfitGrid";
+import ProjectGrid from "../../Component/ProjectGrid";
 
 const ProfitDetails = () => {
   const location = useLocation();
@@ -30,7 +30,7 @@ const ProfitDetails = () => {
   };
   const fetchExternal = async () => {
     const data1 = await axios.get(
-      "https://run.mocky.io/v3/4e64f315-adb4-49df-a439-61a14da36084"
+      "https://run.mocky.io/v3/4fc47154-feef-401d-80d8-6e3978a5bb7d"
     );
     setExternal(data1.data);
   };
@@ -64,7 +64,7 @@ const ProfitDetails = () => {
   console.log(uniqueEmployees);
   return (
     <div>
-      <ProfitGrid
+      <ProjectGrid
         name={name}
         hours={Math.round(hours)}
         projectRevenue={projectRevenue}

@@ -3,32 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Grids from "../../Component/EmployeeGrids";
-// import {options,graphData} from "../../Component/Chart";
-import { Line } from 'react-chartjs-2';
-import React from 'react';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import faker from 'faker';
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
-
+import Charts from "../../Component/LineChart";
+import Grid from '@mui/material/Grid';
 
 const EmployeeDetail = () => {
   const location = useLocation();
@@ -53,7 +29,7 @@ const EmployeeDetail = () => {
   };
   const fetchExternal = async () => {
     const data1 = await axios.get(
-      "https://run.mocky.io/v3/4e64f315-adb4-49df-a439-61a14da36084"
+      "https://run.mocky.io/v3/4fc47154-feef-401d-80d8-6e3978a5bb7d"
     );
     setExternal(data1.data);
   };
@@ -126,45 +102,11 @@ const EmployeeDetail = () => {
   // console.log('bill',bill);
 
 
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      subtitle: {
-        display: true,
-        text: 'Chart Subtitle',
-      },
-        
-      title: {
-        display: true,
-        text: 'Work history',
-      },
-    },
-  };
-  
-  const labels = date
-   const graphData = {
-    labels,
-      subtitle: {
-        display: true,
-        text: 'Chart Subtitle',
-      },
-    datasets: [
-      {
-        label: 'Hours',
-        data: duration.map((d) => d),
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-      },
-    ],
-  };
-
 
   return (
     <>
-      <Line options={options} data={graphData} />
+    
+      <Charts date={date} duration={duration} type={'Line'}/>
       <Grids
         revenue={revenue}
         hours={hours}

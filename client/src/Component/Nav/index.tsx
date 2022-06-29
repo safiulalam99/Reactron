@@ -36,17 +36,11 @@ export default function DrawerAppBar(props: Props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        Reactron
       </Typography>
       <Divider />
       <List>
-        <Link to={`/revenue`} style={{ textDecoration: "none" }}>
-          <ListItem key={"revenue"} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={"revenue"} />
-            </ListItemButton>
-          </ListItem>
-        </Link>
+
 
         <Link to={`/employee`} style={{ textDecoration: "none" }}>
           <ListItem key={"employee"} disablePadding>
@@ -56,10 +50,10 @@ export default function DrawerAppBar(props: Props) {
           </ListItem>
         </Link>
 
-        <Link to={`/profit`} style={{ textDecoration: "none" }}>
-          <ListItem key={"profit"} disablePadding>
+        <Link to={`/project`} style={{ textDecoration: "none" }}>
+          <ListItem key={"project"} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={"profit"} />
+              <ListItemText primary={"project"} />
             </ListItemButton>
           </ListItem>
         </Link>
@@ -88,17 +82,13 @@ export default function DrawerAppBar(props: Props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            REACTRON
           </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            <Link to={`/revenue`} style={{ textDecoration: "none" }}>
-              <Button key={"revenue"} sx={{ color: "#fff" }}>
-                Revenue
-              </Button>
-            </Link>
-            <Link to={`/profit`} style={{ textDecoration: "none" }}>
-              <Button key={"profit"} sx={{ color: "#fff" }}>
-                profit
+          <Box sx={{ display: { xs: "n  one", sm: "block" } }}>
+
+            <Link to={`/project`} style={{ textDecoration: "none" }}>
+              <Button key={"project"} sx={{ color: "#fff" }}>
+                Project
               </Button>
             </Link>
             <Link to={`/employee`} style={{ textDecoration: "none" }}>

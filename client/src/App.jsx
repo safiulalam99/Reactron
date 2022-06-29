@@ -1,8 +1,9 @@
 import './App.css';
 import NavBar from './Component/Nav'
+import FormulaCard from './Formulas'
 import Revenue from './Pages/Revenue'
-import Profit from './Pages/Profit'
-import ProfitDetails from './Pages/ProfitDetails'
+import Profit from './Pages/Project'
+import ProfitDetails from './Pages/ProjectDetails'
 import EmployeeDetail from './Pages/EmployeeDetails'
 import Container from '@mui/material/Container';
 
@@ -18,15 +19,17 @@ import Employee from './Pages/Employee';
 function App() {
   return (
     <Router>
-      <NavBar />
-      <Container style={{ padding: "8vh" }}>
+      <NavBar style={{ background: '#000000' }}/>
+      <Container style={{ padding: "10vh" }}>
       <Routes>
         <Route path="/revenue" element={<Revenue />} />
-        <Route path="/profit" element={<Profit />} />
-        <Route path="/profit/:id" element={<ProfitDetails />} />
+        <Route path="/project" element={<Profit />} />
+        <Route path="/project/:id" element={<ProfitDetails />} />
         <Route path="/" element={<Home />} />
         <Route path="/employee" element={<Employee />} />
         <Route path="/employee/:id" element={<EmployeeDetail />} />
+        <Route path="/employee/:id" element={<EmployeeDetail />} />
+        <Route path="/formula" element={<FormulaCard />} />
       </Routes>
       </Container>
     </Router>

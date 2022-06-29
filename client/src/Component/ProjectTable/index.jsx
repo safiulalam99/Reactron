@@ -7,6 +7,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
+import {StyledTableCell,StyledTableRow} from '../../Component/MuiTableStyles'
+
 
 export default function ProjectTable({ data }) {
   return (
@@ -14,29 +16,29 @@ export default function ProjectTable({ data }) {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Project</TableCell>
-            <TableCell align="right">Customer</TableCell>
-            <TableCell align="right">Activity</TableCell>
-            <TableCell align="right">Hourly Rate</TableCell>
-            <TableCell align="right">Monthly Rate</TableCell>
+            <StyledTableCell>Project</StyledTableCell>
+            <StyledTableCell align="right">Customer</StyledTableCell>
+            <StyledTableCell align="right">Activity</StyledTableCell>
+            <StyledTableCell align="right">Hourly Rate</StyledTableCell>
+            <StyledTableCell align="right">Monthly Rate</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map((row) => (
-            <TableRow
+            <StyledTableRow
               key={row.Hourly_rate}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-                <TableCell component="th" scope="row">
-              <Link to={`/profit/${row.Project}`}>
+                <StyledTableCell component="th" scope="row">
+              <Link to={`/project/${row.Project}`}>
                   {row.Project}
               </Link>
-                </TableCell>
-              <TableCell align="right">{row.Customer}</TableCell>
-              <TableCell align="right">{row.Activity}</TableCell>
-              <TableCell align="right">{row.Hourly_rate}</TableCell>
-              <TableCell align="right">{row.Monthly_rate}</TableCell>
-            </TableRow>
+                </StyledTableCell>
+              <StyledTableCell align="right">{row.Customer}</StyledTableCell>
+              <StyledTableCell align="right">{row.Activity}</StyledTableCell>
+              <StyledTableCell align="right">{row.Hourly_rate}</StyledTableCell>
+              <StyledTableCell align="right">{row.Monthly_rate}</StyledTableCell>
+            </StyledTableRow>
           ))}
         </TableBody>
       </Table>
