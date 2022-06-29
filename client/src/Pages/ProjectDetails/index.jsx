@@ -61,7 +61,7 @@ const ProfitDetails = () => {
   // employees working on project
   const user = filters.map((d) => d.User);
   const uniqueEmployees = user.filter(unique).toString();
-  console.log(uniqueEmployees);
+  console.log(variable);
   return (
     <div>
       <ProjectGrid
