@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import './index.css'
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -12,7 +13,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function ProjectGrid({ name, hours,projectRevenue,employees, profit }) {
+export default function ProjectGrid({ name, hours, projectRevenue, employees, profit }) {
   return (
     <>
       <h1>{name}</h1>
@@ -27,19 +28,19 @@ export default function ProjectGrid({ name, hours,projectRevenue,employees, prof
           <Grid item xs={6}>
             <Item>
               <h3>Project revenue</h3>
-              <h1>{'€'+projectRevenue}</h1>
+              <h1>{'€' + projectRevenue}</h1>
             </Item>
           </Grid>
           <Grid item xs={6}>
             <Item>
               <h3>Employees</h3>
-              <h1>{' '+employees}</h1>
+              <h1>{' ' + employees}</h1>
             </Item>
           </Grid>
           <Grid item xs={6}>
             <Item>
               <h3>Profit</h3>
-              <h1>{'€'+profit}</h1>
+              <h1>{'€' + profit}</h1>
             </Item>
           </Grid>
         </Grid>

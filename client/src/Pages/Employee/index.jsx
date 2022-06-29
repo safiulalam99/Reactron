@@ -11,14 +11,14 @@ const Employee = () => {
     setData(data1.data);
   };
 
-   useEffect(() => {
+  useEffect(() => {
     fetchData();
-   }, []);
+  }, []);
 
-   console.log(data.data);
+  console.log(data.data);
   return (
     <>
-    <h1>Time Sheet</h1>
+      <h1>Time Sheet</h1>
       <EmployeeTable data={data} />
     </>
   );

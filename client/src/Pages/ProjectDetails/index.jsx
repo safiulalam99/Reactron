@@ -17,18 +17,21 @@ const ProfitDetails = () => {
   const unique = (value, index, self) => {
     return self.indexOf(value) === index;
   };
+
   const fetchData = async () => {
     const data1 = await axios.get(
       "https://run.mocky.io/v3/a3f3a8dd-678f-4941-91b2-28923b305d4b"
     );
     setTimeData(data1.data);
   };
+
   const fetchInternal = async () => {
     const data1 = await axios.get(
       "https://run.mocky.io/v3/77d33342-bb12-4e57-a881-d98871b959d2"
     );
     setInternal(data1.data);
   };
+
   const fetchExternal = async () => {
     const data1 = await axios.get(
       "https://run.mocky.io/v3/9618fa8f-fc1f-4429-bb1a-6c752af43975"
@@ -54,24 +57,18 @@ const ProfitDetails = () => {
 
   const projectRevenue = (hours * projectExternalRate).toFixed(2);
 
-  // employee internal salary
-  // filters.map((row) => (hours += row.Duration / 3600));
-  let variable = internal.filter((d) => d.User);
-  let internalSalary = variable.map((d) => d.internal_rate).toString() * hours;
-
-  let obj = {};
+  //profit
+  let internalRate = {};
   let wages = 0;
-  let profit = 0;
-  let filteredInternal = internal.map((d) => (obj[d.User] = d.internal_rate));
+
+  let filteredInternal = internal.map((d) => (internalRate[d.User] = d.internal_rate));
   let tempFilter = filters.map((row) =>
-    obj[row.User]
-      ? (wages += (row.Duration / 3600) * obj[row.User])
+    internalRate[row.User]
+      ? (wages += (row.Duration / 3600) * internalRate[row.User])
       : (wages += 0)
   );
-  console.log(wages);
 
-  profit = projectRevenue - Math.round(wages)
-  console.log(profit)
+  const profit = projectRevenue - Math.round(wages)
 
   // employees working on project
   const user = filters.map((d) => d.User);

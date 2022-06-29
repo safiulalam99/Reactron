@@ -40,8 +40,6 @@ export default function DrawerAppBar(props) {
       </Typography>
       <Divider />
       <List>
-
-
         <Link to={`/`} style={{ textDecoration: "none" }}>
           <ListItem key={"home"} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
@@ -49,6 +47,7 @@ export default function DrawerAppBar(props) {
             </ListItemButton>
           </ListItem>
         </Link>
+
         <Link to={`/employee`} style={{ textDecoration: "none" }}>
           <ListItem key={"employee"} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
