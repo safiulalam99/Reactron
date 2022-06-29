@@ -20,6 +20,9 @@ export default function ResponsiveGrid({
   holiday,
   sickDay,
   user,
+  billable,
+  totalIndex,
+  
 }) {
   return (
     <>
@@ -33,27 +36,31 @@ export default function ResponsiveGrid({
           <Grid item xs={2} sm={4} md={4}>
             <Item>
               <h3> Total revenue brought in by employee </h3>
-              <p>{Math.round(revenue)}</p>
+              <h1>{revenue.toFixed(2)}</h1>
             </Item>
             <Item>
               <h3> Total hours worked </h3>
-              <p>{Math.round(hours)}</p>
+              <h1>{(hours).toFixed(1)}</h1>
             </Item>
             <Item>
               <h3>Projects worked on </h3>
-              <p>{"  " + projects + " "}</p>
+              <h1>{"  " + projects + " "}</h1>
             </Item>
             <Item>
               <h3>Employee salary</h3>
-              <p>{"  " + salary + " "}</p>
+              <h1>{"  " + salary.toFixed(2) + " "}</h1>
             </Item>
             <Item>
               <h3>Holiday</h3>
-              <p>{"  " + holiday + " "}</p>
+              <h1>{"  " + holiday + " "}</h1>
             </Item>
             <Item>
               <h3>Sick leave</h3>
-              <p>{"  " + sickDay + " "}</p>
+              <h1>{"  " + sickDay + " "}</h1>
+            </Item>
+            <Item>
+              <h3>Non-billible hours</h3>
+              <h1>{"  " + billable + "/"+totalIndex}</h1>
             </Item>
           </Grid>
         </Grid>

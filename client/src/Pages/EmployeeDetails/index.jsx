@@ -113,7 +113,17 @@ const EmployeeDetail = () => {
   const duration = filters.map((row) => Math.round(row.Duration / 3600));
   const date = filters.map((row) => row.Date);
 
-  console.log(internalSalary);
+  //non billible
+  let totalNonBillableHours=0;
+  let totalBillableHours=0;
+  const totalFilteredHours= filters.filter((d) => d.Billable ==='Yes');
+  const totalHours=totalFilteredHours.map((d)=>totalBillableHours+=d.Duration/3600)
+
+  const bill = filters.filter((d) => d.Billable ==='No');
+  const billable= bill.map((d)=>totalNonBillableHours+=d.Duration/3600)
+  
+  console.log(totalBillableHours);
+  // console.log('bill',bill);
 
 
   const options = {
@@ -135,7 +145,6 @@ const EmployeeDetail = () => {
   };
   
   const labels = date
-  console.log(duration.map((d) => d));
    const graphData = {
     labels,
       subtitle: {
@@ -164,6 +173,8 @@ const EmployeeDetail = () => {
         sickDay={sickDay}
         holiday={holiday}
         user={user[0]}
+        billable={totalNonBillableHours.toFixed(1)}
+        totalIndex={totalBillableHours.toFixed(1)}
       />
     </>
   );

@@ -33,7 +33,7 @@ export default function RowAndColumnSpacing({ name, hours,projectRevenue,employe
           <Grid item xs={6}>
             <Item>
               <h3>Employees</h3>
-              <h1>{employees}</h1>
+              <h1>{' '+employees}</h1>
             </Item>
           </Grid>
           <Grid item xs={6}>
