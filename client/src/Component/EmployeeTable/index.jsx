@@ -9,12 +9,12 @@ import Paper from "@mui/material/Paper";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import {StyledTableCell,StyledTableRow} from '../../Component/MuiTableStyles'
-
+import { StyledTableCell, StyledTableRow } from '../../Component/MuiTableStyles'
 
 export default function EmployeeTable({ data }) {
   const [searchTerm, setSearchTerm] = useState();
   console.log(searchTerm);
+
   return (
     <Paper>
       <TableContainer component={Paper}>
@@ -32,23 +32,23 @@ export default function EmployeeTable({ data }) {
           </TableHead>
           <TableBody>
             {data.map((row) => (
-                <StyledTableRow
-                  key={row.User}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <Link to={`/employee/${row.User}`}>
-                    <StyledTableCell component="th" scope="row">
-                      {row.User}
-                    </StyledTableCell>
-                  </Link>
-                  <StyledTableCell align="right">{(row.Duration/3600).toFixed(1)}</StyledTableCell>
-                  <StyledTableCell align="right">{row.Date}</StyledTableCell>
-                  <StyledTableCell align="right">{row.Internal_rate}</StyledTableCell>
-                  <StyledTableCell align="right">{row.Customer}</StyledTableCell>
-                  <StyledTableCell align="right">{row.Project}</StyledTableCell>
-                  <StyledTableCell align="right">{row.Billable}</StyledTableCell>
-                </StyledTableRow>
-              ))}
+              <StyledTableRow
+                key={row.User}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <Link to={`/employee/${row.User}`}>
+                  <StyledTableCell component="th" scope="row">
+                    {row.User}
+                  </StyledTableCell>
+                </Link>
+                <StyledTableCell align="right">{(row.Duration / 3600).toFixed(1)}</StyledTableCell>
+                <StyledTableCell align="right">{row.Date}</StyledTableCell>
+                <StyledTableCell align="right">{row.Internal_rate}</StyledTableCell>
+                <StyledTableCell align="right">{row.Customer}</StyledTableCell>
+                <StyledTableCell align="right">{row.Project}</StyledTableCell>
+                <StyledTableCell align="right">{row.Billable}</StyledTableCell>
+              </StyledTableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>

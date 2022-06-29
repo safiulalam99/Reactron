@@ -11,6 +11,7 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
 }));
+
 export default function EmployeeGrids({
   revenue,
   hours,
@@ -31,52 +32,53 @@ export default function EmployeeGrids({
           <Grid item xs={2} sm={4} md={4}>
             <Item>
               <h3> Total revenue brought in by employee </h3>
-              <h1>{'€'+revenue.toFixed(2)}</h1>
+              <h1>{'€' + revenue.toFixed(2)}</h1>
             </Item>
-            </Grid>
+          </Grid>
 
-            <Grid item xs={2} sm={4} md={4}>
+          <Grid item xs={2} sm={4} md={4}>
             <Item>
               <h3> Total hours worked </h3>
               <h1>{hours.toFixed(1)}</h1>
             </Item>
-            </Grid>
+          </Grid>
 
-            <Grid item xs={2} sm={4} md={4}>
+          <Grid item xs={2} sm={4} md={4}>
             <Item>
               <h3>Internal rate per hour</h3>
-              <h1>{'€'+rate }</h1>
+              <h1>{'€' + rate}</h1>
             </Item>
           </Grid>
 
-            <Grid item xs={2} sm={4} md={4}>
+          <Grid item xs={2} sm={4} md={4}>
             <Item>
               <h3>Projects worked on </h3>
               <h1>{"  " + projects + " "}</h1>
             </Item>
-            </Grid>
+          </Grid>
 
-            <Grid item xs={2} sm={4} md={4}>
+          <Grid item xs={2} sm={4} md={4}>
             <Item>
               <h3>Employee salary</h3>
-              <h1>{'€'+salary.toFixed(2) + " "}</h1>
+              <h1>{'€' + salary.toFixed(2) + " "}</h1>
             </Item>
-            </Grid>
+          </Grid>
 
-            <Grid item xs={2} sm={4} md={4}>
+          <Grid item xs={2} sm={4} md={4}>
             <Item>
               <h3>Holidays</h3>
               <h1>{"  " + holiday + " "}</h1>
             </Item>
-            </Grid>
-            <Grid item xs={2} sm={4} md={4}>
+          </Grid>
+          
+          <Grid item xs={2} sm={4} md={4}>
             <Item>
               <h3>Sick leave</h3>
               <h1>{"  " + sickDay + " "}</h1>
             </Item>
-            </Grid>
+          </Grid>
 
-            <Grid item xs={2} sm={4} md={4}>
+          <Grid item xs={2} sm={4} md={4}>
             <Item>
               <h3>Non-billible hours</h3>
               <h1>{"  " + billable + "/" + totalIndex}</h1>

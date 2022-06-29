@@ -21,34 +21,33 @@ ChartJS.register(
   Legend
 );
 
- 
-
-export default function Charts({date,duration}) {
+export default function Charts({ date, duration }) {
   const options = {
     responsive: true,
     plugins: {
       legend: {
         position: 'top',
       },
+      
       subtitle: {
         display: true,
         text: 'Chart Subtitle',
       },
-        
+
       title: {
         display: true,
         text: 'Work history',
       },
     },
   };
-  
+
   const labels = date
-   const graphData = {
+  const graphData = {
     labels,
-      subtitle: {
-        display: true,
-        text: 'Chart Subtitle',
-      },
+    subtitle: {
+      display: true,
+      text: 'Chart Subtitle',
+    },
     datasets: [
       {
         label: 'Hours',
@@ -58,7 +57,6 @@ export default function Charts({date,duration}) {
       },
     ],
   };
-
 
   return <Line options={options} data={graphData} />;
 }

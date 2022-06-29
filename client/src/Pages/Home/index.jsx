@@ -60,6 +60,7 @@ const styles = (theme) => ({
     padding: theme.spacing.unit * 6,
   },
 });
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -74,6 +75,7 @@ function Album(props) {
   const [TimeData, setTimeData] = useState([]);
   const [internal, setInternal] = useState([]);
   const [external, setExternal] = useState([]);
+
   const fetchData = async () => {
     const data1 = await axios.get(
       "https://run.mocky.io/v3/a3f3a8dd-678f-4941-91b2-28923b305d4b"
@@ -104,24 +106,20 @@ function Album(props) {
   let hourly_rate = external.map((d) => d.Hourly_rate);
   let duration = 0;
   TimeData.map((d) => (duration += d.Duration / 3600));
-let TEST_avg_hourly_rev=0
-let TEST_avg_monthly_rev=0
-const hourly_revenue = hourly_rate.map((d)=>TEST_avg_hourly_rev+=d )
-const monthly_revenue = (18750 *12/37)/52
-const avg_hourly_external_rate = TEST_avg_hourly_rev/(hourly_rate.length-1)
-const estimated_rev = ((avg_hourly_external_rate+monthly_revenue)/2) * duration
+  let TEST_avg_hourly_rev = 0
+  let TEST_avg_monthly_rev = 0
+  const hourly_revenue = hourly_rate.map((d) => TEST_avg_hourly_rev += d)
+  const monthly_revenue = (18750 * 12 / 37) / 52
+  const avg_hourly_external_rate = TEST_avg_hourly_rev / (hourly_rate.length - 1)
+  const estimated_rev = ((avg_hourly_external_rate + monthly_revenue) / 2) * duration
 
-
-//estimated profit
-
-let internal_avg_rate =0 
-let internal_rev = internal.map((d)=>internal_avg_rate+=d.internal_rate)
-const salary_avg = internal_rev.length
-const employee_salary = (internal_avg_rate/salary_avg)*duration
-const profit = estimated_rev - employee_salary ;
-console.log(employee_salary);
-
-
+  //estimated profit
+  let internal_avg_rate = 0
+  let internal_rev = internal.map((d) => internal_avg_rate += d.internal_rate)
+  const salary_avg = internal_rev.length
+  const employee_salary = (internal_avg_rate / salary_avg) * duration
+  const profit = estimated_rev - employee_salary;
+  console.log(employee_salary);
 
   return (
     <React.Fragment>
@@ -156,14 +154,14 @@ console.log(employee_salary);
                 <Grid item xs={2} sm={4} md={4}>
                   <Item>
                     <h3> Estimated revenue </h3>
-                    <h1>{'€ '+estimated_rev.toFixed(2)}</h1>
+                    <h1>{'€ ' + estimated_rev.toFixed(2)}</h1>
                   </Item>
                 </Grid>
 
                 <Grid item xs={2} sm={4} md={4}>
                   <Item>
                     <h3>Profit</h3>
-                    <h1>{'€ '+profit.toFixed(2)}</h1>
+                    <h1>{'€ ' + profit.toFixed(2)}</h1>
                   </Item>
                 </Grid>
 
@@ -176,7 +174,7 @@ console.log(employee_salary);
                 <Grid item xs={2} sm={4} md={4}>
                   <Item>
                     <h3>Employee Salaries</h3>
-                    <h1>{'€ '+employee_salary.toFixed(2)}</h1>
+                    <h1>{'€ ' + employee_salary.toFixed(2)}</h1>
                   </Item>
                 </Grid>
               </Grid>

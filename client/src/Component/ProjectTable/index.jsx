@@ -7,8 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
-import {StyledTableCell,StyledTableRow} from '../../Component/MuiTableStyles'
-
+import { StyledTableCell, StyledTableRow } from '../../Component/MuiTableStyles'
 
 export default function ProjectTable({ data }) {
   return (
@@ -29,11 +28,11 @@ export default function ProjectTable({ data }) {
               key={row.Hourly_rate}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-                <StyledTableCell component="th" scope="row">
-              <Link to={`/project/${row.Project}`}>
+              <StyledTableCell component="th" scope="row">
+                <Link to={`/project/${row.Project}`}>
                   {row.Project}
-              </Link>
-                </StyledTableCell>
+                </Link>
+              </StyledTableCell>
               <StyledTableCell align="right">{row.Customer}</StyledTableCell>
               <StyledTableCell align="right">{row.Activity}</StyledTableCell>
               <StyledTableCell align="right">{row.Hourly_rate}</StyledTableCell>
