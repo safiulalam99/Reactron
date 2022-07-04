@@ -6,14 +6,16 @@ Reactor dashboard was made as a part of a hackathon hosted by integrify. The cha
 - Amount of worked hours per employee, project (billable, non-billable)
 
 # Tech stach
+
+## Front end
 - React.js
 - MaterialUI
 - Axios
 - Typescript
+
+## Backend
 - Node.js
-- 
-
-
+- MongoDB
 
 ## Previews
 ### Homepage
